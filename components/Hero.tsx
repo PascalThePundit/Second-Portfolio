@@ -80,8 +80,7 @@ export default function Hero(){
       </div>
 
       <div style={{position:'absolute',bottom:'4rem',display:'flex',flexDirection:'column',alignItems:'center',gap:'10px',opacity:mounted?0.55:0,transition:'opacity 1s ease',transitionDelay:'1.2s', zIndex: 10}}>
-        <span style={{fontFamily:"var(--font-mono),monospace",fontSize:'0.54rem',letterSpacing:'0.28em',color:'var(--muted)',textTransform:'uppercase'}}>Scroll</span>
-        <div style={{width:1,height:48,background:'linear-gradient(to bottom,rgba(240,244,255,0.5),transparent)',animation:'scrollPulse 2.2s ease-in-out infinite'}}/>
+        
       </div>
     </section>
   );
