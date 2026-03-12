@@ -13,6 +13,9 @@ const SKILLS=[
   {name:'HTML',         color:'#fb923c', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'},
   {name:'TypeScript',   color:'#3b82f6', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'},
   {name:'Solana',       color:'#9945FF', icon:'https://cdn.simpleicons.org/solana'},
+  {name:'Gemini',       color:'#4285F4', icon:'https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.17.0/icons/gemini-color.svg'},
+  {name:'Claude',       color:'#D97757', icon:'https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.17.0/icons/claude-color.svg'},
+  {name:'OpenAI',       color:'#10a37f', icon:'https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg'},
 ];
 
 export default function Skills(){
