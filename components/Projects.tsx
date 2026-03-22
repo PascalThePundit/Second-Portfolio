@@ -23,12 +23,12 @@ const TAG_ICONS: Record<string, string | null> = {
 };
 
 const PROJECTS = [
-  { title:'Veil SDK',         desc:'Developer-first privacy abstraction for Solana. Standardizes fragmented ZK protocols into a single TypeScript SDK — making privacy a primitive, not a pivot.',                                                                     tags:['TypeScript','Solana','ZK Proofs','SDK'],        color:'#38bdf8', github:'https://github.com/PascalThePundit/Veil-SDK',                         live:'https://veil-sdk-docs-site.vercel.app'              },
-  { title:'ArciumHyde',       desc:'Privacy-as-a-service platform combining ZKP, MPC, FHE, and TEE on Solana. Named after Jekyll & Hyde — data exists encrypted yet remains mathematically computable.',                                                             tags:['Rust','TypeScript','Solana','Cryptography'],    color:'#a78bfa', github:'https://github.com/PascalThePundit/ArciumHyde',                       live:'https://arcium-hyde.vercel.app'                     },
-  { title:'CredVault',        desc:'On-chain certificate platform. Students earn verifiable credentials for completed courses; employers validate authenticity directly on Solana.',                                                                                   tags:['Rust','TypeScript','Solana','Next.js'],         color:'#f59e0b', github:'https://github.com/PascalThePundit/CredVault',                        live:'https://cred-vault-ten.vercel.app'                  },
-  { title:'Note100',          desc:'AI-powered academic platform with note sharing, real-time collaboration, Voho AI predictions, and anonymous peer discussions for students.',                                                                                      tags:['Next.js','TypeScript','PostgreSQL','OpenAI'],   color:'#34d399', github:'https://github.com/PascalThePundit/Note-100',                         live:null                                                 },
-  { title:'Multisig Wallet',  desc:'Production-grade N-of-M multisig wallet on Solana. Threshold signing, expirable proposals, replay protection. Built for Superteam Nigeria DevQuest.',                                                                           tags:['Rust','Anchor','Solana','TypeScript'],          color:'#f87171', github:'https://github.com/PascalThePundit/multisig-wallet',                   live:null                                                 },
-  { title:'NAAS SE Convention',desc:'Full-stack event registration platform for NAAS South East Convention 2026. Supabase backend with real-time registration and polished Next.js frontend.',                                                                       tags:['Next.js','JavaScript','Supabase','CSS'],        color:'#fb923c', github:'https://github.com/PascalThePundit/NAAS-SOUTH-EAST-CONVENTION26',    live:'https://naas-south-east-convention-26.vercel.app'   },
+  { title:'Veil SDK',          primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',   primaryAlt:'TypeScript', desc:'Developer-first privacy abstraction for Solana. Standardizes fragmented ZK protocols into a single TypeScript SDK — making privacy a primitive, not a pivot.',                                                                     tags:['TypeScript','Solana','ZK Proofs','SDK'],        color:'#38bdf8', github:'https://github.com/PascalThePundit/Veil-SDK',                         live:'https://veil-sdk-docs-site.vercel.app'              },
+  { title:'ArciumHyde',        primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',                primaryAlt:'Rust',        desc:'Privacy-as-a-service platform combining ZKP, MPC, FHE, and TEE on Solana. Named after Jekyll & Hyde — data exists encrypted yet remains mathematically computable.',                                                             tags:['Rust','TypeScript','Solana','Cryptography'],    color:'#a78bfa', github:'https://github.com/PascalThePundit/ArciumHyde',                       live:'https://arcium-hyde.vercel.app'                     },
+  { title:'CredVault',         primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',                primaryAlt:'Rust',        desc:'On-chain certificate platform. Students earn verifiable credentials for completed courses; employers validate authenticity directly on Solana.',                                                                                   tags:['Rust','TypeScript','Solana','Next.js'],         color:'#f59e0b', github:'https://github.com/PascalThePundit/CredVault',                        live:'https://cred-vault-ten.vercel.app'                  },
+  { title:'Note100',           primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',            primaryAlt:'Next.js',     desc:'AI-powered academic platform with note sharing, real-time collaboration, Voho AI predictions, and anonymous peer discussions for students.',                                                                                      tags:['Next.js','TypeScript','PostgreSQL','OpenAI'],   color:'#34d399', github:'https://github.com/PascalThePundit/Note-100',                         live:null                                                 },
+  { title:'Multisig Wallet',   primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',                primaryAlt:'Rust',        desc:'Production-grade N-of-M multisig wallet on Solana. Threshold signing, expirable proposals, replay protection. Built for Superteam Nigeria DevQuest.',                                                                           tags:['Rust','Anchor','Solana','TypeScript'],          color:'#f87171', github:'https://github.com/PascalThePundit/multisig-wallet',                   live:null                                                 },
+  { title:'NAAS SE Convention',primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',            primaryAlt:'Next.js',     desc:'Full-stack event registration platform for NAAS South East Convention 2026. Supabase backend with real-time registration and polished Next.js frontend.',                                                                       tags:['Next.js','JavaScript','Supabase','CSS'],        color:'#fb923c', github:'https://github.com/PascalThePundit/NAAS-SOUTH-EAST-CONVENTION26',    live:'https://naas-south-east-convention-26.vercel.app'   },
 ];
 
 export default function Projects() {
@@ -88,13 +88,22 @@ export default function Projects() {
           <div
             key={p.title}
             ref={el => { cardRefs.current[i] = el; }}
-            className="project-card glass-card"
-            style={{ '--delay':`${i*0.09}s`, display:'flex', flexDirection:'column', position:'relative' } as React.CSSProperties}
+            className="scroll-card glass-card"
+            style={{
+              '--delay': `${i * 0.12}s`,
+              display: 'flex',
+              flexDirection: 'column',
+              position: 'relative',
+            } as React.CSSProperties}
             onMouseMove={e => { setHoveredIndex(i); handleMouseMove(e, i); }}
             onMouseLeave={() => handleMouseLeave(i)}
           >
             {/* 3D corner orb — only render when card visible */}
-            <CornerOrb corner="tr" fast={hoveredIndex === i} />
+            <CornerOrb
+              iconUrl={p.primaryIcon}
+              alt={p.primaryAlt}
+              hovered={hoveredIndex === i}
+            />
 
             {/* Coloured top bar */}
             <div style={{ height:4, background:`linear-gradient(90deg,${p.color},${p.color}66,transparent)`, borderRadius:'28px 28px 0 0', flexShrink:0 }}/>
