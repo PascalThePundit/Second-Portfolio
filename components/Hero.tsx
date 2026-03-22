@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 
-export default function Hero(){
+export default function Hero({ trigger = false }: { trigger?: boolean }){
   const [mounted,setMounted]=useState(false);
   const [nameText, setNameText] = useState('________\n_______');
   const scrambleKey = useRef(0);
@@ -34,9 +34,11 @@ export default function Hero(){
   };
 
   useEffect(() => {
-    const t = setTimeout(triggerScramble, 600);
-    return () => clearTimeout(t);
-  }, []);
+    if (trigger) {
+      const t = setTimeout(triggerScramble, 200);
+      return () => clearTimeout(t);
+    }
+  }, [trigger]);
 
   useEffect(()=>{const t=setTimeout(()=>setMounted(true),100);return()=>clearTimeout(t);},[]);
 

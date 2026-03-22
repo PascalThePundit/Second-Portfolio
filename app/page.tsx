@@ -23,7 +23,7 @@ export default function Home() {
         <SidebarName />
         <Aurora />
         <Nav />
-        <Hero />
+        <Hero trigger={introComplete} />
         <Skills />
         <Projects />
         <Contact />
