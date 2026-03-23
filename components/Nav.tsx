@@ -168,7 +168,7 @@ export default function Nav() {
           transition: 'opacity 0.8s ease 0.5s'
         }}>
           <p style={{ fontFamily: 'var(--font-mono),monospace', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase' }}>
-            Based in Enugu, Nigeria
+            Based in Lagos, Nigeria
           </p>
         </div>
       </div>
