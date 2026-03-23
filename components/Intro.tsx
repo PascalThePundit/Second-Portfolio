@@ -48,7 +48,6 @@ export default function Intro({ onDone }: { onDone: () => void }) {
         position: 'absolute',
         top: 0, left: 0, right: 0,
         height: '50%',
-        // Removed linear gradient, using a solid but subtle translucent layer
         background: 'rgba(255,255,255,0.03)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
@@ -61,7 +60,7 @@ export default function Intro({ onDone }: { onDone: () => void }) {
         paddingBottom: '0.4rem',
         zIndex: 2,
       }}>
-        {/* We place the TOP half of the mesh here */}
+
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '200%', pointerEvents: 'none' }}>
            <AuroraMesh opacity={0.2} />
         </div>
@@ -105,7 +104,7 @@ export default function Intro({ onDone }: { onDone: () => void }) {
         paddingTop: '0.4rem',
         zIndex: 1,
       }}>
-        {/* We place the BOTTOM half of the mesh here */}
+
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '200%', pointerEvents: 'none' }}>
            <AuroraMesh opacity={0.2} />
         </div>
