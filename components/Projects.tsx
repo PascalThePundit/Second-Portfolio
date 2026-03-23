@@ -1,8 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
-
-const CornerOrb = dynamic(() => import('./CornerOrb'), { ssr: false });
+import { useEffect, useRef } from 'react';
 
 const TAG_ICONS: Record<string, string | null> = {
   'TypeScript':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
@@ -14,8 +11,8 @@ const TAG_ICONS: Record<string, string | null> = {
   'CSS':          'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
   'PostgreSQL':   'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
   'Supabase':     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
-  'Anchor':       'https://raw.githubusercontent.com/coral-xyz/anchor/master/docs/static/img/logo.png',
-  'Solana':       'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png',
+  'Anchor':       'https://upload.wikimedia.org/wikipedia/commons/e/e1/Anchor_Logo.png', // Stable alternative for Anchor
+  'Solana':       'https://assets.coingecko.com/coins/images/4128/large/solana.png', // Coingecko is very reliable
   'ZK Proofs':    null,
   'SDK':          null,
   'Cryptography': null,
@@ -24,16 +21,15 @@ const TAG_ICONS: Record<string, string | null> = {
 
 const PROJECTS = [
   { title:'Veil SDK',          primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',   primaryAlt:'TypeScript', desc:'Developer-first privacy abstraction for Solana. Standardizes fragmented ZK protocols into a single TypeScript SDK — making privacy a primitive, not a pivot.',                                                                     tags:['TypeScript','Solana','ZK Proofs','SDK'],        color:'#38bdf8', github:'https://github.com/PascalThePundit/Veil-SDK',                         live:'https://veil-sdk-docs-site.vercel.app'              },
-  { title:'ArciumHyde',        primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',                primaryAlt:'Rust',        desc:'Privacy-as-a-service platform combining ZKP, MPC, FHE, and TEE on Solana. Named after Jekyll & Hyde — data exists encrypted yet remains mathematically computable.',                                                             tags:['Rust','TypeScript','Solana','Cryptography'],    color:'#a78bfa', github:'https://github.com/PascalThePundit/ArciumHyde',                       live:'https://arcium-hyde.vercel.app'                     },
-  { title:'CredVault',         primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',                primaryAlt:'Rust',        desc:'On-chain certificate platform. Students earn verifiable credentials for completed courses; employers validate authenticity directly on Solana.',                                                                                   tags:['Rust','TypeScript','Solana','Next.js'],         color:'#f59e0b', github:'https://github.com/PascalThePundit/CredVault',                        live:'https://cred-vault-ten.vercel.app'                  },
+  { title:'ArciumHyde',        primaryIcon:'https://assets.coingecko.com/coins/images/4128/large/solana.png',                primaryAlt:'Solana',        desc:'Privacy-as-a-service platform combining ZKP, MPC, FHE, and TEE on Solana. Named after Jekyll & Hyde — data exists encrypted yet remains mathematically computable.',                                                             tags:['Rust','TypeScript','Solana','Cryptography'],    color:'#a78bfa', github:'https://github.com/PascalThePundit/ArciumHyde',                       live:'https://arcium-hyde.vercel.app'                     },
+  { title:'CredVault',         primaryIcon:'https://assets.coingecko.com/coins/images/4128/large/solana.png',                primaryAlt:'Solana',        desc:'On-chain certificate platform. Students earn verifiable credentials for completed courses; employers validate authenticity directly on Solana.',                                                                                   tags:['Rust','TypeScript','Solana','Next.js'],         color:'#f59e0b', github:'https://github.com/PascalThePundit/CredVault',                        live:'https://cred-vault-ten.vercel.app'                  },
   { title:'Note100',           primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',            primaryAlt:'Next.js',     desc:'AI-powered academic platform with note sharing, real-time collaboration, Voho AI predictions, and anonymous peer discussions for students.',                                                                                      tags:['Next.js','TypeScript','PostgreSQL','OpenAI'],   color:'#34d399', github:'https://github.com/PascalThePundit/Note-100',                         live:null                                                 },
-  { title:'Multisig Wallet',   primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg',                primaryAlt:'Rust',        desc:'Production-grade N-of-M multisig wallet on Solana. Threshold signing, expirable proposals, replay protection. Built for Superteam Nigeria DevQuest.',                                                                           tags:['Rust','Anchor','Solana','TypeScript'],          color:'#f87171', github:'https://github.com/PascalThePundit/multisig-wallet',                   live:null                                                 },
+  { title:'Multisig Wallet',   primaryIcon:'https://assets.coingecko.com/coins/images/4128/large/solana.png',                primaryAlt:'Solana',        desc:'Production-grade N-of-M multisig wallet on Solana. Threshold signing, expirable proposals, replay protection. Built for Superteam Nigeria DevQuest.',                                                                           tags:['Rust','Anchor','Solana','TypeScript'],          color:'#f87171', github:'https://github.com/PascalThePundit/multisig-wallet',                   live:null                                                 },
   { title:'NAAS SE Convention',primaryIcon:'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg',            primaryAlt:'Next.js',     desc:'Full-stack event registration platform for NAAS South East Convention 2026. Supabase backend with real-time registration and polished Next.js frontend.',                                                                       tags:['Next.js','JavaScript','Supabase','CSS'],        color:'#fb923c', github:'https://github.com/PascalThePundit/NAAS-SOUTH-EAST-CONVENTION26',    live:'https://naas-south-east-convention-26.vercel.app'   },
 ];
 
 export default function Projects() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -43,24 +39,6 @@ export default function Projects() {
     cardRefs.current.forEach(c => c && obs.observe(c));
     return () => obs.disconnect();
   }, []);
-
-  const handleMouseMove = (e: React.MouseEvent, i: number) => {
-    const card = cardRefs.current[i];
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const dx = (e.clientX - (rect.left + rect.width  / 2)) / (rect.width  / 2);
-    const dy = (e.clientY - (rect.top  + rect.height / 2)) / (rect.height / 2);
-    card.style.transform = `perspective(800px) rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg) scale(1.02)`;
-    card.style.transition = 'transform 0.08s ease';
-  };
-
-  const handleMouseLeave = (i: number) => {
-    const card = cardRefs.current[i];
-    if (!card) return;
-    card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)';
-    card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)';
-    setHoveredIndex(null);
-  };
 
   return (
     <section id="projects" className="section-bg" style={{ padding:'clamp(5rem,12vw,9rem) clamp(1.5rem,9vw,9rem)', position:'relative' }}>
@@ -95,16 +73,7 @@ export default function Projects() {
               flexDirection: 'column',
               position: 'relative',
             } as React.CSSProperties}
-            onMouseMove={e => { setHoveredIndex(i); handleMouseMove(e, i); }}
-            onMouseLeave={() => handleMouseLeave(i)}
           >
-            {/* 3D corner orb — only render when card visible */}
-            <CornerOrb
-              iconUrl={p.primaryIcon}
-              alt={p.primaryAlt}
-              hovered={hoveredIndex === i}
-            />
-
             {/* Coloured top bar */}
             <div style={{ height:4, background:`linear-gradient(90deg,${p.color},${p.color}66,transparent)`, borderRadius:'28px 28px 0 0', flexShrink:0 }}/>
 

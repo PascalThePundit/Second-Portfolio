@@ -10,6 +10,9 @@ const jetbrainsMono = JetBrains_Mono({ weight: ['400', '500'], subsets: ['latin'
 export const metadata: Metadata = {
   title: 'Pascal Chukwu — Software Developer',
   description: 'Software Developer & Senior Prompt Engineer. Building privacy-first, blockchain-native, and intelligent applications.',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
