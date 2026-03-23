@@ -73,7 +73,7 @@ export default function Hero({ trigger = false }: { trigger?: boolean }){
       </div>
 
       <div style={{display:'flex',gap:'2.4rem',marginTop:'2.4rem',opacity:mounted?1:0,transform:mounted?'translateY(0)':'translateY(12px)',transition:'all 0.9s ease',transitionDelay:'0.8s',zIndex:2}}>
-        {[{value:'1+',label:'Year Exp'},{value:'15+',label:'Projects'},{value:'5+',label:'Live Apps'}].map(s=>(
+        {[{value:'3+',label:'Year Exp'},{value:'15+',label:'Projects'},{value:'5+',label:'Live Apps'}].map(s=>(
           <div key={s.label} style={{textAlign:'center'}}>
             <div style={{fontFamily:"var(--font-bebas),'Bebas Neue',Impact,sans-serif",fontSize:'clamp(1.8rem,4vw,2.6rem)',letterSpacing:'0.06em',background:'linear-gradient(135deg,var(--blue),var(--violet))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text',lineHeight:1}}>{s.value}</div>
             <div style={{fontFamily:"var(--font-mono),monospace",fontSize:'0.52rem',letterSpacing:'0.22em',color:'var(--muted)',textTransform:'uppercase',marginTop:'0.25rem'}}>{s.label}</div>
